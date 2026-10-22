@@ -141,10 +141,10 @@ clearBtn.addEventListener("click", (e) => {
   filledEl.style.display = "none";
 });
 
-const bigNumber = 1325456573;
-const slicedNo = String(bigNumber);
-const reslice = slicedNo.slice(0, 5);
-const newSlice = Number(reslice);
-console.log(newSlice.toLocaleString());
-console.log(slicedNo);
-console.log(bigNumber.toLocaleString());
+// const bigNumber = 1325456573;
+// const slicedNo = String(bigNumber);
+// const reslice = slicedNo.slice(0, 5);
+// const newSlice = Number(reslice);
+// console.log(newSlice.toLocaleString());
+// console.log(slicedNo);
+// console.log(bigNumber.toLocaleString());
