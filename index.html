@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Big+Shoulders:opsz,wght@10..72,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kumbh+Sans:wght,YOPQ@100..900,300&family=Lexend+Deca:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Overpass:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap"
+      rel="stylesheet"
+    /> -->
+
+    <title>Frontend Mentor | Mortgage repayment calculator</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./app.js " defer></script>
+  </head>
+  <body>
+    <main>
+      <form class="form" id="form">
+        <div class="form-title">
+          <h1>Mortgage Calculator</h1>
+          <button type="button" id="clear-btn">Clear All</button>
+        </div>
+
+        <div class="field" id="amount-field">
+          <div class="label" for="amount">Mortgage Amount</div>
+          <div class="input-wrap">
+            <span class="symbol">£</span>
+            <input type="text" class="numbersonly" id="amount" />
+          </div>
+          <p class="error-msg"></p>
+        </div>
+
+        <div class="row">
+          <div class="field" id="term-field">
+            <div class="label" for="term">Mortgage Term</div>
+            <div class="input-wrap">
+              <input type="text" class="numbersonly1" id="term" />
+              <span class="symbol">years</span>
+            </div>
+            <p class="error-msg"></p>
+          </div>
+
+          <div class="field" id="rate-field">
+            <div class="label" for="rate">Interest Rate</div>
+            <div class="input-wrap">
+              <input type="text" class="decimal" id="rate" />
+              <span class="symbol">%</span>
+            </div>
+            <p class="error-msg"></p>
+          </div>
+        </div>
+
+        <div class="field" id="type-field">
+          <span class="label">Mortgage Type</span>
+          <div class="radio">
+            <input type="radio" name="type" value="repayment" /> Repayment
+          </div>
+          <div class="radio">
+            <input type="radio" name="type" value="interest-only" /> Interest
+            Only
+          </div>
+          <p class="error-msg"></p>
+        </div>
+
+        <button type="submit" class="submit">
+          <span><img src="./images/icon-calculator.svg" alt="" /></span>
+          Calculate Repayments
+        </button>
+      </form>
+
+      <section class="results">
+        <div class="empty" id="empty">
+          <div class="empty-icon">
+            <img src="./images/./illustration-empty.svg" alt="" />
+          </div>
+          <h2>Results shown here</h2>
+          <p>
+            Complete the form and click “calculate repayments” to see what your
+            monthly repayments would be.
+          </p>
+        </div>
+
+        <div class="filled" id="filled">
+          <h2>Your results</h2>
+          <p>
+            Your results are shown below based on the information you provided.
+            To adjust the results, edit the form and click “calculate
+            repayments” again.
+          </p>
+
+          <div class="box">
+            <p>Your monthly repayments</p>
+            <p class="big" id="monthly"></p>
+            <hr />
+            <p class="total-label">Total you'll repay over the term</p>
+            <p class="total" id="total"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
