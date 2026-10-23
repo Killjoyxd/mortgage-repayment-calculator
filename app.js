@@ -25,16 +25,17 @@ console.log(amountField.value);
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  let p = amountInput.value;
+  let p = Number(amountInput.value.replace(/,/g, ""));
   let r = rateInput.value / 100 / 12;
-  let n = termInput.value;
+  let n = Number(termInput.value.replace(/,/g, "")) * 12;
 
   const monthlyPay = function () {
+    if (r === 0) return p / n;
     return (pay = p * ((r * (1 + r) ** n) / ((1 + r) ** n - 1)));
   };
 
   const intrest = function () {
-    return (intr = monthlyPay() * n - p);
+    return (intr = monthlyPay() * n);
   };
   if (amountInput.value === "") {
     error[0].style.display = "block";
@@ -92,26 +93,45 @@ form.addEventListener("submit", (e) => {
   ) {
     emptyEl.style.display = "none";
     filledEl.style.display = "block";
+
+    let monthlyStr = String(monthlyPay());
+    let totalStr = String(intrest());
+    if (monthlyStr.includes(".")) {
+      monthlyStr = monthlyStr.slice(0, monthlyStr.indexOf(".") + 3);
+    }
+    if (totalStr.includes(".")) {
+      totalStr = totalStr.slice(0, totalStr.indexOf(".") + 3);
+    }
+
+    let m1 = Number(monthlyStr);
+    let t1 = Number(totalStr);
+
+    monthlyEl.textContent = "£" + m1.toLocaleString();
+    total.textContent = "£" + t1.toLocaleString();
   }
-
-  monthlyEl.textContent = "£" + monthlyPay().toFixed(2);
-  total.textContent = "£" + intrest().toFixed(2);
 });
-const numbersOnly = document.querySelector(".numbersonly");
-
-numbersOnly.addEventListener("input", function () {
-  this.value = this.value.replace(/[^0-9]/g, "");
-});
-const numberOnly = document.querySelector(".numbersonly1");
-
-numberOnly.addEventListener("input", function () {
-  this.value = this.value.replace(/[^0-9]/g, "");
+amountInput.addEventListener("input", function () {
+  const digits = amountInput.value.replace(/[^0-9]/g, "");
+  if (digits === "") {
+    amountInput.value = "";
+    return;
+  }
+  amountInput.value = Number(digits).toLocaleString();
 });
 
-const decimal = document.querySelector(".decimal");
+termInput.addEventListener("input", function () {
+  const digits = termInput.value.replace(/[^0-9]/g, "");
+  if (digits === "") {
+    termInput.value = "";
+    return;
+  }
+  termInput.value = Number(digits).toLocaleString();
+});
 
-decimal.addEventListener("input", function () {
-  this.value = this.value.replace(/[^0-9.]/g, "").replace(/(\..*)\./g, "$1");
+rateInput.addEventListener("input", function () {
+  rateInput.value = rateInput.value
+    .replace(/[^0-9.]/g, "")
+    .replace(/(\..*)\./g, "$1");
 });
 clearBtn.addEventListener("click", (e) => {
   e.preventDefault();
